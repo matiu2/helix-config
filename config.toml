@@ -1,0 +1,23 @@
+theme = "ayu_evolve"
+
+[editor]
+auto-format = true
+path-completion = true
+
+[editor.soft-wrap]
+enable = true
+
+[editor.lsp]
+display-inlay-hints = false
+snippets = true
+display-messages = true
+
+[keys.normal]
+C-r = ":reload"
+C-s = ":w"
+"g" = { "f" = ":pipe-to dx fmt -f /dev/stdin" }
+
+[keys.insert]
+C-s = ":w"
+
+

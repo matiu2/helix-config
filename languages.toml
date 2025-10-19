@@ -1,0 +1,81 @@
+# [language-server.rust-analyzer.config.procMacro.ignored]
+# leptos_macro = [ "component", "server" ]
+
+# [language-server.rust-analyzer]
+# command = "rust-analyzer-nightly"
+
+[[language]]
+name = "rust"
+language-servers = [ "rust-analyzer", "basics-language-server", "emmet-rust" ]
+
+[language-server.basics-language-server]
+command = "basics-language-server"
+
+[language-server.basics-language-server.config]
+snippet.enable = true
+snippet.sources = ["/home/matiu/snippets"]
+snippet.matchStrategy = "exact"
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+interpret.tests = "true"
+check.workspace = "false"
+completion.fullFunctionSignatures.enable = "true"
+completion.termSearch.enable = "true"
+cargo.buildScripts.invocationStrategy = "per_workspace"
+diagnostics.disabled = ["unlinked-file"]
+# cargo.features = ["csr", "ssr", "hydrate"]
+# procMacro.ignored.leptos_macro = ["server", "component"]
+inlayHints.bindingModeHints.enable = true
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+server.incremental = true
+
+[language-server.yaml-language-server.config.yaml]
+completion = true
+validation = true
+hover = true
+format = true
+
+[language-server.yaml-language-server.config.yaml.schemaStore]
+enable = true
+# url = "https://www.schemastore.org/yaml/"
+url = "https://www.schemastore.org/api/json/catalog.json"
+
+[language-server.yaml-language-server.config.yaml.schemas]
+kubernetes = [ "*deployment*.yaml",
+ "*service*.yaml",
+ "*configmap*.yaml",
+ "*secret*.yaml",
+ "*pod*.yaml",
+ "*namespace*.yaml",
+ "*ingress*.yaml" 
+]
+"https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json" = [
+  "*kustomization.yaml",
+  "*kustomize.yaml"
+]
+"https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" = [
+  "*.yaml",
+  "**/workflows/*.yaml",
+  "**/templates/*.yaml",
+  "*workflow*.yaml",
+  "*-wf.yaml",
+  "*-wft.yaml",
+  "*template*.yaml"
+]
+
+[language-server.emmet-language-server]
+args = ["--stdio"]
+command="emmet-language-server"
+
+[language-server.emmet-rust]
+command = "/home/matiu/.cargo/bin/emmet-rust"
+
+[[language]]
+name = "html"
+formatter = { command = "prettier", args = ["--parser", "html"] }
+language-servers = ["vscode-html-language-server", "emmet-language-server", "superhtml"]
