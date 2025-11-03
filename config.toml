@@ -17,8 +17,7 @@ display-messages = true
 C-r = ":reload"
 C-s = ":w"
 "g" = { "f" = ":pipe-to dx fmt -f /dev/stdin" }
+C-S-t = ":pipe tv"
 
 [keys.insert]
 C-s = ":w"
-
-

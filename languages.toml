@@ -6,7 +6,7 @@
 
 [[language]]
 name = "rust"
-language-servers = [ "rust-analyzer", "basics-language-server", "emmet-rust", "cspell" ]
+language-servers = [ "rust-analyzer", "basics-language-server", "emmet-rust", "codebook" ]
 
 [language-server.basics-language-server]
 command = "basics-language-server"
@@ -75,14 +75,14 @@ command="emmet-language-server"
 [language-server.emmet-rust]
 command = "/home/matiu/.cargo/bin/emmet-rust"
 
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
 [[language]]
 name = "html"
 formatter = { command = "prettier", args = ["--parser", "html"] }
 language-servers = ["vscode-html-language-server", "emmet-language-server", "superhtml"]
-
-[language-server.cspell-lsp]
-command = "cspell-lsp"
-args = ["--stdio"]
 
 [[language]]
 name = "markdown"
@@ -90,7 +90,7 @@ scope = "source.md"
 injection-regex = "md|markdown"
 file-types = ["md", "livemd", "markdown", "mdx", "mkd", "mkdn", "mdwn", "mdown", "markdn", "mdtxt", "mdtext", "workbook", { glob = "PULLREQ_EDITMSG" }]
 roots = [".marksman.toml"]
-language-servers = [ "marksman", "markdown-oxide", "cspell-lsp" ]
+language-servers = [ "marksman", "markdown-oxide", "codebook" ]
 indent = { tab-width = 2, unit = "  " }
 block-comment-tokens = { start = "<!--", end = "-->" }
 
@@ -98,4 +98,4 @@ block-comment-tokens = { start = "<!--", end = "-->" }
 name = "text"
 scope = "text.plain"
 file-types = ["txt"]
-language-servers = ["cspell-lsp"]
+language-servers = ["codebook"]
